@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/ticket-system/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/ticket-system/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/ticket-system",
+  "projects": {
+    "order-worker": {
+      "type": "application",
+      "root": "apps/order-worker",
+      "entryFile": "main",
+      "sourceRoot": "apps/order-worker/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/order-worker/tsconfig.app.json"
+      }
+    },
+    "ticket-system": {
+      "type": "application",
+      "root": "apps/ticket-system",
+      "entryFile": "main",
+      "sourceRoot": "apps/ticket-system/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/ticket-system/tsconfig.app.json"
+      }
+    }
+  }
+}

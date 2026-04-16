@@ -1,0 +1,32 @@
+services:
+  # 1. RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  # 2. Redis
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  # 3. Redis Insight (Dashboard)
+  redisinsight:
+    image: redis/redisinsight:latest
+    ports:
+      - "8081:5540"
+    depends_on:
+      - redis
+
+  # 4. MongoDB
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
